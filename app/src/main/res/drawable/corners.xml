@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:shape="rectangle">
+    <corners android:radius="5dp"/>
+    <gradient
+        android:centerColor="@color/white"
+        android:centerX="@color/white"
+        android:centerY="@color/white"
+        android:endColor="@color/white"
+        android:startColor="@color/white"/>
+    <size
+        android:height="?attr/actionBarSize"/>
+</shape>

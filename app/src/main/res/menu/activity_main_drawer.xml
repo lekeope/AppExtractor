@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/feedback"
+        android:icon="@drawable/ic_feedback"
+        android:title="@string/rating_dialog_feedback_title"/>
+    <item
+        android:id="@+id/rate_app"
+        android:icon="@drawable/ic_star_dark"
+        android:title="@string/rate_app"/>
+    <item
+        android:id="@+id/share_app"
+        android:icon="@drawable/ic_share"
+        android:title="Share"/>
+    <item
+        android:title="Other Apps">
+        <menu>
+            <item
+                android:id="@+id/status_saver"
+                android:icon="@drawable/ic_instagram_logo"
+                android:title="Status Saver"/>
+            <item
+                android:id="@+id/imei_tools"
+                android:icon="@drawable/ic_tool"
+                android:title="IMEI Tools"/>
+            <item
+                android:id="@+id/check_imei"
+                android:icon="@drawable/ic_search"
+                android:title="Check IMEI"/>
+            <item
+                android:id="@+id/root_checker"
+                android:icon="@drawable/ic_check"
+                android:title="Root Checker"/>
+            <item
+                android:id="@+id/apk_extractor"
+                android:icon="@drawable/ic_download"
+                android:title="Apk Extractor"/>
+            <item
+                android:id="@+id/other_apps"
+                android:icon="@drawable/ic_apps"
+                android:title="Other Apps"/>
+        </menu>
+    </item>
+</menu>
