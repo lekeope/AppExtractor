@@ -92,9 +92,9 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
     override fun onClickInfo(position: Int) {
         val app = appsAdapter.mSortedList[position]
         val intent = Intent()
-        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
         val uri = Uri.fromParts("package", app.appPackageName, null)
-        intent.setData(uri)
+        intent.data = uri
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
@@ -161,9 +161,9 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
     fun reloadApps() {
         val loader: Loader<Long>? = supportLoaderManager.getLoader<Long>(LOAD_APPS_ASYNC_ID)
         if (loader == null)
-            supportLoaderManager.initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this));
+            supportLoaderManager.initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
         else
-            supportLoaderManager.restartLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this));
+            supportLoaderManager.restartLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
         setLoadAppsDialog(true)
         appsAdapter.mSortedList.clear()
     }
@@ -274,7 +274,7 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
             }
             Collections.sort(appModels, object : kotlin.Comparator<AppModel> {
                 override fun compare(app1: AppModel?, app2: AppModel?): Int {
-                    return String.CASE_INSENSITIVE_ORDER.compare(app1?.getAppName(), app2?.getAppName())
+                    return String.CASE_INSENSITIVE_ORDER.compare(app1?.appName, app2?.appName)
                 }
             })
             Singleton.list = appModels
@@ -288,13 +288,13 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
             return LoadAppsAsyncTaskLoader(context, packageManager)
         }
 
-        override fun onLoadFinished(loader: Loader<Boolean>?, data: Boolean?) {
+        override fun onLoadFinished(loader: Loader<Boolean>, data: Boolean?) {
             refreshRecyclerView()
             setLoadAppsDialog(false)
             Log.d(TAG, "onLoad - APPS - Finished")
         }
 
-        override fun onLoaderReset(loader: Loader<Boolean>?) {}
+        override fun onLoaderReset(loader: Loader<Boolean>) {}
     }
 
     fun showIndeterminateSnackBar(context: Context, app_name: String) {
@@ -365,18 +365,18 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
             return ExtractAppAsyncTaskLoader(context, args)
         }
 
-        override fun onLoadFinished(loader: Loader<Boolean>?, data: Boolean?) {
+        override fun onLoadFinished(loader: Loader<Boolean>, data: Boolean?) {
             dismissIndeterminateSnackBar()
             showToast(appNameTinyDb!!.getString(APP_NAME_TINY_DB_KEY))
             appNameTinyDb!!.putString(APP_NAME_TINY_DB_KEY, "")
             Log.d(TAG, "onLoad - EXTRACTION - Finished")
         }
 
-        override fun onLoaderReset(loader: Loader<Boolean>?) {}
+        override fun onLoaderReset(loader: Loader<Boolean>) {}
     }
 
     private fun vibrate() {
-        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator ?: return
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         if (Build.VERSION.SDK_INT >= 26)
             vibrator.vibrate(VibrationEffect.createOneShot(100, 10))

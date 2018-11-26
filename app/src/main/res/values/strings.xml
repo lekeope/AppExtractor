@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Apk Extractor</string>
+    <string name="app_name">App Extractor</string>
     <string name="banner_ad_unit_id">ca-app-pub-9297690518647609/2039015538</string>
     <string-array name="file_save_format">
         <item>App Name</item>

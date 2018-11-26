@@ -16,11 +16,11 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
 //    var list: MutableList<AppModel> = ArrayList<AppModel>()
     val mSortedList = SortedList<AppModel>(AppModel::class.java , MySortedListCallback())
 
-    override fun onBindViewHolder(holder: AppHolder?, position: Int) {
+    override fun onBindViewHolder(holder: AppHolder, position: Int) {
         val appModel = mSortedList[position]
-        holder?.imageView?.setImageDrawable(appModel.drawable)
-        holder?.nameTxtView?.setText(appModel.appName)
-        holder?.packagenameTxtView?.setText(appModel.appPackageName)
+        holder.imageView?.setImageDrawable(appModel.drawable)
+        holder.nameTxtView?.text = appModel.appName
+        holder.packagenameTxtView?.text = appModel.appPackageName
     }
 
     override fun getItemCount(): Int {
@@ -39,8 +39,8 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
         mSortedList.endBatchedUpdates()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AppHolder {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppHolder {
+        val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.single_app_layout, parent, false)
         return AppHolder(view, clickedApp)
     }
@@ -80,7 +80,7 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
 
     inner class MySortedListCallback : SortedList.Callback<AppModel>() {
         override fun areItemsTheSame(item1: AppModel?, item2: AppModel?): Boolean {
-            return item1?.getId() == item2?.getId()
+            return item1?.id == item2?.id
         }
 
         override fun onInserted(position: Int, count: Int) {
