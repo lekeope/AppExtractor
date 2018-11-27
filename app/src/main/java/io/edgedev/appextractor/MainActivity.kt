@@ -9,11 +9,10 @@ import android.content.pm.ResolveInfo
 import android.net.Uri
 import android.os.*
 import android.provider.Settings
-import android.support.constraint.ConstraintLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.LoaderManager.LoaderCallbacks
+import android.support.v4.app.LoaderManager.*
 import android.support.v4.content.AsyncTaskLoader
 import android.support.v4.content.Loader
 import android.support.v7.app.AlertDialog
@@ -35,11 +34,33 @@ import java.io.FileOutputStream
 import java.util.*
 
 class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextListener {
+    override fun onClickedPlaystore(position: Int) {
+        val app = appsAdapter.mSortedList[position]
+        val playstoreAppLocation = "market://details?id="+app.appPackageName
+        val websiteAppLocation = "https://play.google.com/store/apps/details?id="+app.appPackageName
+        val isPlaystoreAvail = launchWebSite(playstoreAppLocation)
+        if (!isPlaystoreAvail)launchWebSite(websiteAppLocation)
+    }
+
+    private fun launchWebSite(urlString: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
+        if (intent.resolveActivity(packageManager) != null) {
+            try {
+                startActivity(intent)
+            } catch (e: Exception) {
+                return false
+            }
+            return true
+        }
+
+        return false
+    }
+
     override fun onClickedOpen(position: Int) {
         val app = appsAdapter.mSortedList[position]
         try {
-            val i = packageManager.getLaunchIntentForPackage(app.appPackageName)
-            startActivity(i)
+            val appIntent = packageManager.getLaunchIntentForPackage(app.appPackageName)
+            startActivity(appIntent)
         } catch (e: PackageManager.NameNotFoundException) {
             Log.e(TAG, e.message)
         }
@@ -153,8 +174,8 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
         showIndeterminateSnackBar(this, appNameTinyDb!!.getString(APP_NAME_TINY_DB_KEY))
 
         grantStoragePermission()
-        supportLoaderManager.initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
-        supportLoaderManager.initLoader(EXTRACT_APPS_ASYNC_ID, null, ExtractAppsCallback(this))
+        getInstance(this).initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
+        getInstance(this).initLoader(EXTRACT_APPS_ASYNC_ID, null, ExtractAppsCallback(this))
     }
 
     private fun setLoadAppsDialog(show: Boolean) {
@@ -170,22 +191,22 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
     }
 
     fun reloadApps() {
-        val loader: Loader<Long>? = supportLoaderManager.getLoader<Long>(LOAD_APPS_ASYNC_ID)
+        val loader: Loader<Long>? = getInstance(this).getLoader<Long>(LOAD_APPS_ASYNC_ID)
         if (loader == null)
-            supportLoaderManager.initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
+            getInstance(this).initLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
         else
-            supportLoaderManager.restartLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
+            getInstance(this).restartLoader(LOAD_APPS_ASYNC_ID, null, LoadAppsCallback(this))
         setLoadAppsDialog(true)
         appsAdapter.mSortedList.clear()
     }
 
     fun extractApp(bundle: Bundle) {
         grantStoragePermission()
-        val loader: Loader<Long>? = supportLoaderManager.getLoader<Long>(EXTRACT_APPS_ASYNC_ID)
+        val loader: Loader<Long>? = getInstance(this).getLoader<Long>(EXTRACT_APPS_ASYNC_ID)
         if (loader == null)
-            supportLoaderManager.initLoader(EXTRACT_APPS_ASYNC_ID, bundle, ExtractAppsCallback(this))
+            getInstance(this).initLoader(EXTRACT_APPS_ASYNC_ID, bundle, ExtractAppsCallback(this))
         else
-            supportLoaderManager.restartLoader(EXTRACT_APPS_ASYNC_ID, bundle, ExtractAppsCallback(this))
+            getInstance(this).restartLoader(EXTRACT_APPS_ASYNC_ID, bundle, ExtractAppsCallback(this))
 
         showIndeterminateSnackBar(this, appNameTinyDb!!.getString(APP_NAME_TINY_DB_KEY))
     }
@@ -268,19 +289,23 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
             Log.d(TAG, "Inside Load In Background")
             val startupIntent = Intent(ACTION_MAIN)
             startupIntent.addCategory(CATEGORY_LAUNCHER)
-            val appModels: MutableList<AppModel> = ArrayList<AppModel>()
+            val appModels: MutableList<AppModel> = ArrayList()
             val activities: List<ResolveInfo> = packageManager.queryIntentActivities(startupIntent, 0)
             var count = 0
-            for (info in activities) {
+            val packageManager = packageManager
+            for (resolveInfo in activities) {
                 if (isLoadInBackgroundCanceled) return false
+                val appPackageName = resolveInfo.activityInfo.packageName
                 val appModel = AppModel(
                         count++
-                        , info.loadLabel(packageManager).toString()
-                        , info.activityInfo.packageName
-                        , info.loadIcon(packageManager)
-                        , info.activityInfo.applicationInfo.publicSourceDir
+                        , resolveInfo.loadLabel(packageManager).toString()
+                        , appPackageName
+                        , resolveInfo.loadIcon(packageManager)
+                        , resolveInfo.activityInfo.applicationInfo.publicSourceDir
+                        , packageManager.getPackageInfo(appPackageName, 0).versionName
                 )
                 appModels.add(appModel)
+                Log.d(TAG, "ResolveInfo = $count")
                 Log.d(TAG, "Count = $count")
             }
             Collections.sort(appModels, object : kotlin.Comparator<AppModel> {

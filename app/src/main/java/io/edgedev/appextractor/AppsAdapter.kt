@@ -14,14 +14,14 @@ import android.widget.TextView
  * Created by OPEYEMI OLORUNLEKE on 1/13/2018.
  */
 class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppModel>) : RecyclerView.Adapter<AppsAdapter.AppHolder>() {
-//    var list: MutableList<AppModel> = ArrayList<AppModel>()
     val mSortedList = SortedList<AppModel>(AppModel::class.java , MySortedListCallback())
 
     override fun onBindViewHolder(holder: AppHolder, position: Int) {
         val appModel = mSortedList[position]
-        holder.imageView?.setImageDrawable(appModel.drawable)
-        holder.nameTxtView?.text = appModel.appName
-        holder.packagenameTxtView?.text = appModel.appPackageName
+        holder.imageView.setImageDrawable(appModel.drawable)
+        holder.nameTxtView.text = appModel.appName
+        holder.packagenameTxtView.text = appModel.appPackageName
+        holder.versionNameTxtView.text = appModel.appVersion
     }
 
     override fun getItemCount(): Int {
@@ -47,30 +47,34 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
     }
 
     fun addApps(appModels: MutableList<AppModel>) {
-//        list = appModels
         mSortedList.addAll(appModels)
     }
 
     inner class AppHolder(val view: View, val clickedApp: ClickedApp) : RecyclerView.ViewHolder(view), View.OnClickListener {
-        var imageView: ImageView? = null
-        var nameTxtView: TextView? = null
-        var packagenameTxtView: TextView? = null
+        var imageView: ImageView
+        var nameTxtView: TextView
+        var packagenameTxtView: TextView
+        var versionNameTxtView: TextView
         var extractButton: Button
         var infoButton: Button
         var openButton: Button
+        var playStoreButton: Button
 
 
         init {
             imageView = view.findViewById(R.id.app_icon)
             nameTxtView = view.findViewById(R.id.app_name)
             packagenameTxtView = view.findViewById(R.id.package_name)
+            versionNameTxtView = view.findViewById(R.id.app_version)
             infoButton = view.findViewById(R.id.info)
             extractButton = view.findViewById(R.id.download)
             openButton = view.findViewById(R.id.open_app)
+            playStoreButton = view.findViewById(R.id.play_store)
 
             extractButton.setOnClickListener(this)
             openButton.setOnClickListener(this)
             infoButton.setOnClickListener(this)
+            playStoreButton.setOnClickListener(this)
 
         }
 
@@ -79,6 +83,7 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
                 R.id.info -> clickedApp.onClickInfo(adapterPosition)
                 R.id.download -> clickedApp.onClickDownload(adapterPosition)
                 R.id.open_app -> clickedApp.onClickedOpen(adapterPosition)
+                R.id.play_store -> clickedApp.onClickedPlaystore(adapterPosition)
             }
         }
     }
