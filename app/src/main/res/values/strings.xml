@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name">App Extractor</string>
     <string name="banner_ad_unit_id">ca-app-pub-9297690518647609/2039015538</string>
-    <string-array name="file_save_format">
-        <item>App Name</item>
-        <item>Package Name</item>
-        <item>Version Code</item>
-        <item>Version Number</item>
-    </string-array>
     <string name="file_saving_format_key">file_saving_format_key</string>
     <string name="search">Search</string>
     <string name="rate_app">Rate App</string>
@@ -14,4 +8,8 @@
     <string name="loading_apps">Keep Calm. Loading Apps&#8230;</string>
     <string name="refresh">Refresh</string>
     <string name="dev_email">edgedeveloper007@gmail.com</string>
+    <string name="extract">Extract</string>
+    <string name="open">Open</string>
+    <string name="info">Info</string>
+    <string name="dialog_extracting">Extracting</string>
 </resources>

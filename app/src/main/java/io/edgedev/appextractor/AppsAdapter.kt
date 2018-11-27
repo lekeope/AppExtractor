@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -54,8 +55,9 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
         var imageView: ImageView? = null
         var nameTxtView: TextView? = null
         var packagenameTxtView: TextView? = null
-        var extractButton: ImageButton? = null
-        var infoButton: ImageButton? = null
+        var extractButton: Button
+        var infoButton: Button
+        var openButton: Button
 
 
         init {
@@ -64,9 +66,11 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
             packagenameTxtView = view.findViewById(R.id.package_name)
             infoButton = view.findViewById(R.id.info)
             extractButton = view.findViewById(R.id.download)
+            openButton = view.findViewById(R.id.open_app)
 
-            extractButton!!.setOnClickListener(this)
-            infoButton!!.setOnClickListener(this)
+            extractButton.setOnClickListener(this)
+            openButton.setOnClickListener(this)
+            infoButton.setOnClickListener(this)
 
         }
 
@@ -74,6 +78,7 @@ class AppsAdapter(val clickedApp: ClickedApp, val comparator: Comparator<AppMode
             when (v?.id) {
                 R.id.info -> clickedApp.onClickInfo(adapterPosition)
                 R.id.download -> clickedApp.onClickDownload(adapterPosition)
+                R.id.open_app -> clickedApp.onClickedOpen(adapterPosition)
             }
         }
     }

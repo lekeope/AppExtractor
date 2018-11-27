@@ -9,6 +9,7 @@ import android.content.pm.ResolveInfo
 import android.net.Uri
 import android.os.*
 import android.provider.Settings
+import android.support.constraint.ConstraintLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
@@ -33,7 +34,17 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.util.*
 
-class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextListener {
+    override fun onClickedOpen(position: Int) {
+        val app = appsAdapter.mSortedList[position]
+        try {
+            val i = packageManager.getLaunchIntentForPackage(app.appPackageName)
+            startActivity(i)
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.e(TAG, e.message)
+        }
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false
     }
@@ -85,7 +96,7 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
         val TAG = "MainActivity"
         val APP_NAME_KEY = "App_Name.Key"
         val FILE_PATH_NAME_KEY = "App_File_Path_Name.Key"
-        val SAVE_FILE_LOCATION = "/Apk Extractor/"
+        val SAVE_FILE_LOCATION = "/App Extractor/"
     }
 
 
@@ -300,11 +311,6 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
     fun showIndeterminateSnackBar(context: Context, app_name: String) {
         if (app_name.trim().length < 1) return
         indeterminateSnackBar = Snackbar.make(coordinator_layout!!, "Keep Calm. Extracting \"$app_name\"", Snackbar.LENGTH_INDEFINITE)
-/*indeterminateSnackBar!!.setAction(android.R.string.cancel, object : View.OnClickListener {
-    override fun onClick(v: View?) {
-        // cancel app extraction
-    }
-})*/
         val snack_view = indeterminateSnackBar!!.view as Snackbar.SnackbarLayout
         snack_view.addView(ProgressBar(context))
         indeterminateSnackBar!!.show()
@@ -384,21 +390,3 @@ class MainActivityx : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextLis
             vibrator.vibrate(100)
     }
 }
-
-/*
-*
-override fun onLoadFinished(loader: Loader<Boolean>?, data: Boolean?) {
-dismissIndeterminateSnackBar()
-vibrate()
-showAppExtractedFinishToast()
-Log.d(TAG, "onLoad - EXTRACTION - Finished")
-}
-
-override fun onLoaderReset(loader: Loader<Boolean>?) {}
-}
-
-fun showAppExtractedFinishToast(){
-if (!shouldShowAppExtractedFinishToast) return
-Toast.makeText(this, "Successfully Extracted \"$APP_NAME_4_ROTATION\"", Toast.LENGTH_LONG).show()
-}
-* */

@@ -163,7 +163,7 @@ public class AppExtractorFragment extends Fragment implements SearchView.OnQuery
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_app_extractor, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.apps_recycler_view);
+        mRecyclerView = view.findViewById(R.id.apps_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setupAdapter();
         return view;
@@ -349,7 +349,7 @@ public class AppExtractorFragment extends Fragment implements SearchView.OnQuery
         @Override
         public void onClick(View view) {
             int id = view.getId();
-            if (id == R.id.app_icon || id == R.id.l_layout) {
+            if (id == R.id.app_icon /*|| id == R.id.l_layout*/) {
                 mCallback.saveFile(mAppModel.getFilePathName(), view, mAppModel.getAppName());
 
             } else if (id == R.id.info) {

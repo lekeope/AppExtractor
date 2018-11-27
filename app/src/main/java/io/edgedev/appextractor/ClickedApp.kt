@@ -5,5 +5,6 @@ package io.edgedev.appextractor
  */
 interface ClickedApp{
     fun onClickDownload(position: Int)
+    fun onClickedOpen(position: Int)
     fun onClickInfo(position: Int)
 }
