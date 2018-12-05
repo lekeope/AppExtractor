@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">I-Extractor</string>
+    <string name="search">Sesha</string>
+    <string name="rate_app">Linganisa uhlelo lokusebenza</string>
+    <string name="settings">Izilungiselelo</string>
+    <string name="loading_apps">Iyalayisha</string>
+    <string name="refresh">Qala kabusha</string>
+    <string name="extract">Khipha</string>
+    <string name="launch">Qalisa</string>
+    <string name="info">Ulwazi</string>
+    <string name="dialog_extracting">Ukukhipha</string>
+    <string name="play_store">Isitolo se-Play</string>
+    <string name="storage_permision">Imvume Yokugcina</string>
+    <string name="grant_storage_permission">Yiya ku-Izimvume Zokunikezela Imvume Ememori Yokugcinwa Kwe-Acesess Storage</string>
+    <string name="app_needs_storage_permission">I-Extractor idinga ukugcinwa kwemvume</string>
+    <string name="app_extract_success">Iphumelele ngempumelelo \"%1$s\" ku-%2$s</string>
+</resources>

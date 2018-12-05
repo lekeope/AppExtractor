@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Apk Extractor</string>
+    <string name="search">Chercher</string>
+    <string name="rate_app">Application de taux</string>
+    <string name="settings">Réglages</string>
+    <string name="loading_apps">Chargement</string>
+    <string name="refresh">Rafraîchir</string>
+    <string name="extract">Extrait</string>
+    <string name="launch">lancement</string>
+    <string name="info">Info</string>
+    <string name="dialog_extracting">Extraire</string>
+    <string name="play_store">Play Store</string>
+    <string name="storage_permision">Permis de stockage</string>
+    <string name="grant_storage_permission">Accédez aux autorisations pour accorder une autorisation à la mémoire de stockage Aceess.</string>
+    <string name="app_needs_storage_permission">Apk Extractor nécessite une autorisation de stockage</string>
+    <string name="app_extract_success">Extrait avec succès \"%1$s\" à %2$s</string>
+</resources>

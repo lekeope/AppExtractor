@@ -1,16 +1,20 @@
 <resources>
-    <string name="app_name">App Extractor</string>
-    <string name="banner_ad_unit_id">ca-app-pub-9297690518647609/2039015538</string>
-    <string name="file_saving_format_key">file_saving_format_key</string>
+    <string name="dev_email" translatable="false">edgedeveloper007@gmail.com</string>
+    <string name="file_saving_format_key" translatable="false">file_saving_format_key</string>
+
+    <string name="app_name">Apk Extractor</string>
     <string name="search">Search</string>
     <string name="rate_app">Rate App</string>
     <string name="settings">Settings</string>
     <string name="loading_apps">Keep Calm. Loading Apps&#8230;</string>
     <string name="refresh">Refresh</string>
-    <string name="dev_email">edgedeveloper007@gmail.com</string>
     <string name="extract">Extract</string>
-    <string name="open">Open</string>
+    <string name="launch">Launch</string>
     <string name="info">Info</string>
     <string name="dialog_extracting">Extracting</string>
     <string name="play_store">Play Store</string>
+    <string name="storage_permision">Storage Permission</string>
+    <string name="grant_storage_permission">Go to Permissions to Grant Storage Access</string>
+    <string name="app_needs_storage_permission">App Extractor needs Storage Permission</string>
+    <string name="app_extract_success">Successfully Extracted \"%1$s\" to %2$s</string>
 </resources>

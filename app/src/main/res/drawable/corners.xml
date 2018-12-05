@@ -6,11 +6,11 @@
     android:shape="rectangle">
     <corners android:radius="5dp"/>
     <gradient
-        android:centerColor="@color/white"
+        android:centerColor="#ffffff"
         android:centerX="@color/white"
         android:centerY="@color/white"
-        android:endColor="@color/white"
-        android:startColor="@color/white"/>
+        android:endColor="#ffffff"
+        android:startColor="#ffffff"/>
     <size
         android:height="?attr/actionBarSize"/>
 </shape>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Apk Extractor</string>
+    <string name="search">Ricerca</string>
+    <string name="rate_app">App tariffaria</string>
+    <string name="settings">impostazioni</string>
+    <string name="loading_apps">Caricamento in corso</string>
+    <string name="refresh">ricaricare</string>
+    <string name="extract">Estratto</string>
+    <string name="launch">Lanciare</string>
+    <string name="info">Informazioni</string>
+    <string name="dialog_extracting">Estrazione</string>
+    <string name="play_store">Play Store</string>
+    <string name="storage_permision">Autorizzazione di archiviazione</string>
+    <string name="grant_storage_permission">Passare a Autorizzazioni per concedere l\'autorizzazione alla memoria di archiviazione di Aceess</string>
+    <string name="app_needs_storage_permission">Apk Extractor ha bisogno di autorizzazione di archiviazione</string>
+    <string name="app_extract_success">Estratto con successo da \"%1$s\" a %2$s</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Ekstraktor Apk</string>
+    <string name="search">Pencarian</string>
+    <string name="rate_app">Beri Nilai Aplikasi</string>
+    <string name="settings">Pengaturan</string>
+    <string name="loading_apps">Pemuatan</string>
+    <string name="refresh">Menyegarkan</string>
+    <string name="extract">Ekstrak</string>
+    <string name="launch">Meluncurkan</string>
+    <string name="info">Info</string>
+    <string name="dialog_extracting">Ekstraksi</string>
+    <string name="play_store">Play Store</string>
+    <string name="storage_permision">Izin Penyimpanan</string>
+    <string name="grant_storage_permission">Buka Izin untuk Memberikan Izin ke Memori Penyimpanan Aceess</string>
+    <string name="app_needs_storage_permission">Apk Extractor membutuhkan Izin Penyimpanan</string>
+    <string name="app_extract_success">Berhasil Mengekstrak \"%1$s\" ke %2$s</string>
+</resources>

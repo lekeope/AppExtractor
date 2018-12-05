@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">एपीके निकालने वाला</string>
+    <string name="search">खोज</string>
+    <string name="rate_app">एप्लिकेशन का मूल्यांकन करें</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="loading_apps">लोड हो रहा है</string>
+    <string name="refresh">ताज़ा करना</string>
+    <string name="extract">उद्धरण</string>
+    <string name="launch">प्रक्षेपण</string>
+    <string name="info">जानकारी</string>
+    <string name="dialog_extracting">निकाला जा रहा है</string>
+    <string name="play_store">प्ले स्टोर</string>
+    <string name="storage_permision">संग्रहण अनुमति</string>
+    <string name="grant_storage_permission">ऐस स्टोरेज मेमोरी को अनुदान अनुमति के लिए अनुमतियों पर जाएं</string>
+    <string name="app_needs_storage_permission">एपीके एक्स्ट्रैक्टर को स्टोरेज अनुमति की आवश्यकता है</string>
+    <string name="app_extract_success">\"%1$s\" से %2$s सफलतापूर्वक निकाला गया</string>
+</resources>

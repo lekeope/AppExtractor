@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
         val TAG = "MainActivity"
         val APP_NAME_KEY = "App_Name.Key"
         val FILE_PATH_NAME_KEY = "App_File_Path_Name.Key"
-        val SAVE_FILE_LOCATION = "/App Extractor/"
+        val SAVE_FILE_LOCATION = "/Apk Extractor/"
     }
 
 
@@ -152,8 +152,8 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
         searchView.setOnQueryTextListener(this)
 
         coordinator_layout = findViewById(R.id.coordinator_layout)
-        Log.d("MainActivityX", toolbar.toString())
-        Log.d("MainActivityX", "OnCreate")
+        Log.d(TAG, toolbar.toString())
+        Log.d(TAG, "OnCreate")
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView?.layoutManager = LinearLayoutManager(this)
         recyclerView?.adapter = appsAdapter
@@ -236,11 +236,11 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
                 // this is where you can explain why you need the permission more or less like the first time
             } else if (storagePermissionStatus!!.getBoolean(STORAGE_PERMISSION_KEY)) {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Need Storage Permission")
-                builder.setMessage("This app needs storage permission.")
-                builder.setPositiveButton("Grant") { dialog, which ->
+                builder.setTitle(getString(R.string.storage_permision))
+                builder.setMessage(getString(R.string.app_needs_storage_permission))
+                builder.setPositiveButton(getString(android.R.string.ok)) { dialog, which ->
                     dialog.cancel()
-                    launchSettings(STORAGE_PERMISSION_REQUEST_CODE, "Go to Permissions to Grant \"Storage\"")
+                    launchSettings(STORAGE_PERMISSION_REQUEST_CODE, getString(R.string.grant_storage_permission))
                 }
                 builder.setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
                 builder.show()
@@ -270,8 +270,10 @@ class MainActivity : AppCompatActivity(), ClickedApp, SearchView.OnQueryTextList
 
     fun showToast(app_name: String) {
         if (app_name.trim().length < 1) return
-        Toast.makeText(this,
-                "Successfully Extracted \"$app_name\" to $SAVE_FILE_LOCATION", Toast.LENGTH_LONG).show()
+        Toast.makeText(
+                this,
+                getString(R.string.app_extract_success, app_name, SAVE_FILE_LOCATION), Toast.LENGTH_LONG
+        ).show()
         vibrate()
     }
 

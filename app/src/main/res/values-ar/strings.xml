@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Apk Extractor</string>
+    <string name="search">بحث</string>
+    <string name="rate_app">معدل التطبيق</string>
+    <string name="settings">الإعدادات</string>
+    <string name="loading_apps">جار التحميل</string>
+    <string name="refresh">تحديث</string>
+    <string name="extract">استخراج</string>
+    <string name="launch">إطلاق</string>
+    <string name="info">معلومات</string>
+    <string name="dialog_extracting">استخراج</string>
+    <string name="play_store">متجر Play</string>
+    <string name="storage_permision">إذن التخزين</string>
+    <string name="grant_storage_permission">انتقل إلى أذونات لمنح إذن إلى ذاكرة التخزين Aceess</string>
+    <string name="app_needs_storage_permission">Apk Extractor يحتاج إلى إذن تخزين</string>
+    <string name="app_extract_success">تم بنجاح استخراج \"%1$s\" إلى %2$s</string>
+</resources>

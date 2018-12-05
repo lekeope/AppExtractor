@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Extrator Apk</string>
+    <string name="search">Procurar</string>
+    <string name="rate_app">Avaliar aplicativo</string>
+    <string name="settings">Definições</string>
+    <string name="loading_apps">Carregando</string>
+    <string name="refresh">Atualizar</string>
+    <string name="extract">Extrair</string>
+    <string name="launch">Lançamento</string>
+    <string name="info">Info</string>
+    <string name="dialog_extracting">Extraindo</string>
+    <string name="play_store">Loja de jogos</string>
+    <string name="storage_permision">Permissão de Armazenamento</string>
+    <string name="grant_storage_permission">Vá para Permissões para Conceder Permissão para Aceitar Memória de Armazenamento</string>
+    <string name="app_needs_storage_permission">Apk Extractor precisa de permissão de armazenamento</string>
+    <string name="app_extract_success">Sucesso extraído \"%1$s\" para %2$s</string>
+</resources>

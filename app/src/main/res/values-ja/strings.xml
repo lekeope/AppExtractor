@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Apk Extractor</string>
+    <string name="search">サーチ</string>
+    <string name="rate_app">アプリを評価</string>
+    <string name="settings">設定</string>
+    <string name="loading_apps">読み込み中</string>
+    <string name="refresh">リフレッシュ</string>
+    <string name="extract">エキス</string>
+    <string name="launch">打ち上げ</string>
+    <string name="info">情報</string>
+    <string name="dialog_extracting">抽出</string>
+    <string name="play_store">プレイストア</string>
+    <string name="storage_permision">ストレージの許可</string>
+    <string name="grant_storage_permission">アクセス権を参照して、Aceessストレージメモリへのアクセス許可を付与する</string>
+    <string name="app_needs_storage_permission">Apk Extractorにはストレージ権限が必要</string>
+    <string name="app_extract_success">\"%1$s\"を%2$sに正常に抽出</string>
+</resources>

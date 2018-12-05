@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">Apk Extractor</string>
+    <string name="search">Paghahanap</string>
+    <string name="rate_app">Rate ng App</string>
+    <string name="settings">Mga Setting</string>
+    <string name="loading_apps">Naglo-load</string>
+    <string name="refresh">Refresh</string>
+    <string name="extract">I-extract</string>
+    <string name="launch">Ilunsad</string>
+    <string name="info">Impormasyon</string>
+    <string name="dialog_extracting">Extracting</string>
+    <string name="play_store">Play Store</string>
+    <string name="storage_permision">Pahintulot sa Imbakan</string>
+    <string name="grant_storage_permission">Pumunta sa Pahintulot upang Magbigay ng Pahintulot sa Memoryess Storage Memory</string>
+    <string name="app_needs_storage_permission">Kinakailangan ng Apk Extractor ang Pahintulot sa Imbakan</string>
+    <string name="app_extract_success">Matagumpay na na-extract \"%1$s\" sa %2$s</string>
+</resources>
